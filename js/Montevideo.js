@@ -17,7 +17,9 @@ function showData(API, Array2) {
   }.png" class="img-thumbnail" alt="Icon weather">
   <p>${item.description}</p>
   <p>Temperatura: ${(API.main.temp - 273.15).toFixed(0) + "º" + "C"}</p>
-  <p>Sensación térmica: ${(API.main.feels_like - 273.15).toFixed(0) + "º" + "C"}</p>
+  <p>Sensación térmica: ${
+    (API.main.feels_like - 273.15).toFixed(0) + "º" + "C"
+  }</p>
   <p>Min: ${(API.main.temp_min - 273.15).toFixed(0) + "º" + "C"}</p>
   <p>Max: ${(API.main.temp_max - 273.15).toFixed(0) + "º" + "C"}</p>
   <p>Humedad: ${API.main.humidity}%</p>
