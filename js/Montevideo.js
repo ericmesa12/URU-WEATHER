@@ -38,5 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
       showData(ApiArray, Array2);
     }
   });
-  setInterval(showData(), 1000);
 });
