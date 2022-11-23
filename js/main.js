@@ -1,5 +1,24 @@
-const URL_MONTEVIDEO =
-  "https://api.openweathermap.org/data/2.5/weather?q=montevideo,uy&appid=aa56fcdffb2a6f5b543ed4f9b3029c5d";
+let getJSONData = function (url) {
+  let result = {};
+  return fetch(url)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw Error(response.statusText);
+      }
+    })
+    .then(function (response) {
+      result.status = "ok";
+      result.data = response;
+      return result;
+    })
+    .catch(function (error) {
+      result.status = "error";
+      result.data = error;
+      return result;
+    });
+};
 
 (function ($) {
   "use strict";
