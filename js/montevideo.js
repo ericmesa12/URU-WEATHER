@@ -8,14 +8,14 @@ function showData(API, Array2) {
   for (let item of Array2) {
     style += `
   <div class="card text-center">
-    <div class="card-body">
-      <h5 class="card-title">${API.name} ${API.sys.country}</h5>
+    <div class="container">
+      <h5 class="title">${API.name} ${API.sys.country}</h5>
     </div>
   <div class="card-footer text-muted">
   <img src="https://openweathermap.org/img/w/${
     item.icon
   }.png" class="img-thumbnail" alt="Icon weather">
-  <p>${item.description}</p>
+  <p>${item.description} </p>
   <p>Temperatura: ${(API.main.temp - 273.15).toFixed(0) + "º" + "C"}</p>
   <p>Sensación térmica: ${
     (API.main.feels_like - 273.15).toFixed(0) + "º" + "C"
@@ -31,8 +31,19 @@ function showData(API, Array2) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  getJSONData(URL_MONTEVIDEO + "montevideo" + URL_PART2).then(function (
+    resultado
+  ) {
+    if (resultado.status === "ok") {
+      ApiArray = resultado.data;
+      Array2 = resultado.data.weather;
+      showData(ApiArray, Array2);
+    }
+  });
   document.getElementById("btn-buscar").addEventListener("click", function () {
-    getJSONData(URL_MONTEVIDEO + search.value + URL_PART2).then(function (resultado) {
+    getJSONData(URL_MONTEVIDEO + search.value + URL_PART2).then(function (
+      resultado
+    ) {
       if (resultado.status === "ok") {
         ApiArray = resultado.data;
         Array2 = resultado.data.weather;
