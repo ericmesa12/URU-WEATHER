@@ -1,6 +1,6 @@
-const URL_MONTEVIDEO =
-  "https://api.openweathermap.org/data/2.5/weather?q=montevideo,uy&appid=aa56fcdffb2a6f5b543ed4f9b3029c5d";
-
+const URL_MONTEVIDEO = "https://api.openweathermap.org/data/2.5/weather?q=";
+const URL_PART2 = ",uy&appid=aa56fcdffb2a6f5b543ed4f9b3029c5d";
+let search = document.getElementById("buscar");
 let ApiArray = [];
 
 function showData(API, Array2) {
@@ -31,11 +31,13 @@ function showData(API, Array2) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  getJSONData(URL_MONTEVIDEO).then(function (resultado) {
-    if (resultado.status === "ok") {
-      ApiArray = resultado.data;
-      Array2 = resultado.data.weather;
-      showData(ApiArray, Array2);
-    }
+  document.getElementById("btn-buscar").addEventListener("click", function () {
+    getJSONData(URL_MONTEVIDEO + search.value + URL_PART2).then(function (resultado) {
+      if (resultado.status === "ok") {
+        ApiArray = resultado.data;
+        Array2 = resultado.data.weather;
+        showData(ApiArray, Array2);
+      }
+    });
   });
 });
