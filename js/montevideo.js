@@ -7,14 +7,12 @@ function showData(API, Array2) {
   let style = "";
   for (let item of Array2) {
     style += `
-  <div class="card text-center">
-    <div class="container">
-      <h5 class="title">${API.name} ${API.sys.country}</h5>
-    </div>
-  <div class="card-footer text-muted">
-  <img src="https://openweathermap.org/img/w/${
-    item.icon
-  }.png" class="img-thumbnail" alt="Icon weather">
+    <div class="card" style="width: 200px;">
+    <h5 class="title">${API.name} ${API.sys.country}</h5>
+    <img src="https://openweathermap.org/img/w/${
+      item.icon
+    }.png" class="card-img-top" alt="Icon weather">
+  <div class="card-body">
   <p>${item.description} </p>
   <p>Temperatura: ${(API.main.temp - 273.15).toFixed(0) + "º" + "C"}</p>
   <p>Sensación térmica: ${
@@ -24,8 +22,7 @@ function showData(API, Array2) {
   <p>Max: ${(API.main.temp_max - 273.15).toFixed(0) + "º" + "C"}</p>
   <p>Humedad: ${API.main.humidity}%</p>
   </div>
-</div>
-  `;
+</div>`;
   }
   document.getElementById("ShowData").innerHTML = style;
 }
